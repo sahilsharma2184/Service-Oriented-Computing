@@ -4,28 +4,28 @@
         <id>1</id>
         <name>John Doe</name>
         <age>20</age>
-        <grade>20</grade>
+        <position>Team Lead</position>
         <city>Computer Science</city>
     </student>
     <student>
         <id>2</id>
         <name>Jane Smith</name>
         <age>22</age>
-        <grade>B</grade>
+        <position>Manager</position>
         <city>Hyderabad</city>
     </student>
     <student>
         <id>3</id>
         <name>Mani</name>
         <age>24</age>
-        <grade>B</grade>
+        <position>Head Of Department</position>
         <city>Delhi</city>
     </student>
     <student>
         <id>4</id>
         <name>Mani</name>
         <age>26</age>
-        <grade>C</grade>
+        <position>Database Engineer</position>
         <city>Banglore</city>
     </student>    
 </students>

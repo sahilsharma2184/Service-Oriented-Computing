@@ -6,29 +6,24 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 
-public class StudentXMLToHTML {
+public class EmployeeXMLToHTML {
     public static void main(String[] args) {
         try {
-            // Load and parse the XML file
-            File xmlFile = new File("student.xml");
+            File xmlFile = new File("Employee.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
 
-            // Get the list of students
-            NodeList nList = doc.getElementsByTagName("student");
+            NodeList nList = doc.getElementsByTagName("student");  // Changed from "Employee" to "student"
 
-            // Start building the HTML table
             StringBuilder html = new StringBuilder();
             html.append("<html><body>");
-            html.append("<h2>Student Information</h2>");
+            html.append("<h2>Employee Information</h2>");
             html.append("<table border='1'>");
-            html.append("<tr><th>ID</th><th>Name</th><th>Age</th><th>Major</th></tr>");
+            html.append("<tr><th>ID</th><th>Name</th><th>Age</th><th>Position</th><th>City</th></tr>");
 
-            // Iterate over each student and add a row to the table
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
 
@@ -37,13 +32,15 @@ public class StudentXMLToHTML {
                     String id = eElement.getElementsByTagName("id").item(0).getTextContent();
                     String name = eElement.getElementsByTagName("name").item(0).getTextContent();
                     String age = eElement.getElementsByTagName("age").item(0).getTextContent();
-                    String major = eElement.getElementsByTagName("major").item(0).getTextContent();
+                    String position = eElement.getElementsByTagName("position").item(0).getTextContent();
+                    String city = eElement.getElementsByTagName("city").item(0).getTextContent();
 
                     html.append("<tr>");
                     html.append("<td>").append(id).append("</td>");
                     html.append("<td>").append(name).append("</td>");
                     html.append("<td>").append(age).append("</td>");
-                    html.append("<td>").append(major).append("</td>");
+                    html.append("<td>").append(position).append("</td>");
+                    html.append("<td>").append(city).append("</td>");
                     html.append("</tr>");
                 }
             }
@@ -53,11 +50,11 @@ public class StudentXMLToHTML {
             html.append("</body></html>");
 
             // Save the HTML to a file
-            FileWriter fileWriter = new FileWriter("student.html");
+            FileWriter fileWriter = new FileWriter("Employee.html");
             fileWriter.write(html.toString());
             fileWriter.close();
 
-            System.out.println("HTML file created: student.html");
+            System.out.println("HTML file created: Employee.html");
 
         } catch (Exception e) {
             e.printStackTrace();
